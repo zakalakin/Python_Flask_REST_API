@@ -18,7 +18,7 @@ Flask-SQLAlchemy
 
 mark /code directory as sources root
 
-##RUN
+## RUN
 remove data.db (if exists)
 
 enter venv
@@ -28,3 +28,10 @@ run create_table.py
 run app.py
 # runs the app on port 5000
 hit the end points
+
+## Deploy
+This app is being deployed to Heroku
+requirements.txt contains the Python libraries in use
+runtime.txt contains the Python version used in the project
+uwsgi.ini config params for the uwsgi process to run the app
+Procfile settings for dyno
