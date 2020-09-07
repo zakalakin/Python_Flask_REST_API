@@ -14,11 +14,6 @@ app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 app.secret_key = "secret"
 api = Api(app)
 
-@app.before_first_request
-def create_tables():
-    db.create_all()
-
-
 # creates new endpoint /auth
 jwt = JWT(app, authenticate, identity)
 
@@ -30,5 +25,11 @@ api.add_resource(Stores, "/stores")
 
 if __name__ == "__main__":
     from db import db
+
+    @app.before_first_request
+    def create_tables():
+        db.create_all()
+
+    # should I also adda create tables here...
     db.init_app(app)
     app.run(port=5000, debug=True)
